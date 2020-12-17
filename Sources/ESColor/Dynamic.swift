@@ -16,12 +16,12 @@ public struct Name {
     fileprivate var dynamic: Int
     fileprivate var dark: Int
 
-    init(dynamic: Int, dark: Int) {
+    public init(dynamic: Int, dark: Int) {
         self.dynamic = dynamic
         self.dark = dark
     }
     
-    init(_ value: Int) {
+    public init(_ value: Int) {
         self.dynamic = value
         self.dark = value
     }
