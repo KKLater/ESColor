@@ -13,18 +13,23 @@ import UIKit
 
 @available(iOS 13.0, *)
 public struct Name {
-    fileprivate var dynamic: Int
-    fileprivate var dark: Int
+    fileprivate var dynamicColor: ESUIColor
+    fileprivate var darkColor: ESUIColor
 
     public init(dynamic: Int, dark: Int) {
-        self.dynamic = dynamic
-        self.dark = dark
+        self.init(dynamicColor: ESUIColor(dynamic), darkColor: ESUIColor(dark))
     }
     
     public init(_ value: Int) {
-        self.dynamic = value
-        self.dark = value
+        self.init(dynamic: value, dark: value)
     }
+    
+    public init(dynamicColor: ESUIColor, darkColor: ESUIColor) {
+        self.dynamicColor = dynamicColor
+        self.darkColor = darkColor
+    }
+    
+    
 }
 
 @available(iOS 13.0, *)
@@ -40,7 +45,8 @@ public extension ESUIColor {
     }
     
     convenience init(_ name: ESColor.Name) {
-        self.init(name.dynamic, name.dark)
+        self.init { $0.userInterfaceStyle == .dark ? name.dynamicColor : name.darkColor }
+
     }
     
     

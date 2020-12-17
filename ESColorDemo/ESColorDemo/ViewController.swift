@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let color1 = UIColor(0x788833)
-        let color2 = UIColor(0x000000, 0xFFFFFF)
+        let color2 = UIColor(0xFFFFFF, 0x000000)
         let color3 = UIColor(.normal)
         let color4 = UIColor(Name(0xFFFFFF))
         print(color1, color2, color3, color4)
@@ -63,12 +63,12 @@ class ViewController: UIViewController {
 
     func startAnimation(view: UIView, c1: UIColor, c2: UIColor, i: Int) {
         var progress = i
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
             progress += 1
-            let amount = Float(progress) / 5
+            let amount = Float(progress) / 50
             let mixColor = c1.mix(with: c2, amount: amount)
             view.backgroundColor = mixColor
-            if progress < 5 {
+            if progress < 50 {
                 self.startAnimation(view: view, c1: c1, c2: c2, i: progress)
             }
         }
