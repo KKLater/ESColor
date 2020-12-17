@@ -20,6 +20,10 @@ public extension ESUIColor {
     typealias ColorComponents = (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
     
     convenience init(_ value: Int) {
+        guard value != 0 else {
+            self.init(red: 0, green: 0, blue: 0, alpha: 0)
+            return
+        }
         let hexStr = ESUIColor.hexString(for: value)
         let alpha = ESUIColor.alpha(for: hexStr)
         let formatHexString = ESUIColor.formatHexString(hexStr)
@@ -28,6 +32,10 @@ public extension ESUIColor {
     }
     
     convenience init(_ value: Int, alpha: CGFloat) {
+        guard value != 0 else {
+            self.init(red: 0, green: 0, blue: 0, alpha: 0)
+            return
+        }
         let hexStr = ESUIColor.hexString(for: value)
         let formatHexString = ESUIColor.formatHexString(hexStr)
         let components = ESUIColor.colorComponents(formatHexString)
