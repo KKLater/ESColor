@@ -20,10 +20,11 @@ class ViewController: UIViewController {
         let color2 = UIColor(0xFFFFFF, 0x000000)
         let color3 = UIColor(.normal)
         let color4 = UIColor(Name(0xFFFFFF))
+        let color5 = UIColor(Name(dynamicColor: .red, darkColor: .green))
         print(color1, color2, color3, color4)
 
-        let color5 = UIColor.randomColor()
-        print(color5)
+        let color6 = UIColor.randomColor()
+        print(color6)
         
         let view1 = UIView(frame: CGRect(x: 10, y: 100, width: 80, height: 80))
         view1.backgroundColor = color1
@@ -44,6 +45,10 @@ class ViewController: UIViewController {
         let view5 = UIView(frame: CGRect(x: 100, y: 200, width: 80, height: 80))
         view5.backgroundColor = color5
         view.addSubview(view5)
+        
+        let view6 = UIView(frame: CGRect(x: 200, y: 200, width: 80, height: 80))
+        view6.backgroundColor = color6
+        view.addSubview(view6)
         
         let red = color1.red
         let green = color1.green

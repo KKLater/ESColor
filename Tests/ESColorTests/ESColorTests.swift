@@ -12,19 +12,6 @@ typealias ESUIColor = UIColor
 
 final class ESColorTests: XCTestCase {
     
-    @available(iOS 13.0, *)
-    extension ESColor.Name {
-        static let normal = Name(dynamic: 0xFF9987, dark: 0x987377)
-    }
-
-    
-    
-
-
-    @available(iOS 13.0, *)
-    func testDynamic() {
-        let color = ESUIColor(normal)
-    }
     func testExample() {
         let a = ESUIColor(0xFFEE1122).red
         print(a)
