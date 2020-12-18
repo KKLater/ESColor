@@ -5,6 +5,6 @@ target 'ESColorDemo' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'ESColor', :git => 'https://github.com/KKLater/ESColor.git', :branch => 'dev'
+  pod 'ESColor', '0.0.1'
 
 end

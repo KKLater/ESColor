@@ -5,9 +5,9 @@
         "package": "ESColor",
         "repositoryURL": "https://github.com/KKLater/ESColor.git",
         "state": {
-          "branch": "dev",
-          "revision": "4b8fc1df814aeeec0ae3e6258f9c198eb7eb452f",
-          "version": null
+          "branch": null,
+          "revision": "3af8bd7bbd6317d7bcab8c332f2276b1bae417aa",
+          "version": "0.0.1"
         }
       }
     ]
