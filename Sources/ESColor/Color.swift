@@ -21,7 +21,7 @@ public extension ESUIColor {
     
     convenience init(_ value: Int) {
         guard value != 0 else {
-            self.init(red: 0, green: 0, blue: 0, alpha: 0)
+            self.init(red: 0, green: 0, blue: 0, alpha: 1)
             return
         }
         let hexStr = ESUIColor.hexString(for: value)
@@ -30,7 +30,7 @@ public extension ESUIColor {
     
     convenience init(_ value: Int, alpha: CGFloat) {
         guard value != 0 else {
-            self.init(red: 0, green: 0, blue: 0, alpha: 0)
+            self.init(red: 0, green: 0, blue: 0, alpha: 1)
             return
         }
         
