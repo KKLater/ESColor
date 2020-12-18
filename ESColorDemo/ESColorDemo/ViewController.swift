@@ -27,8 +27,11 @@ class ViewController: UIViewController {
         let color6 = UIColor.randomColor()
         print(color6)
         
-        let color7 = UIColor(hexString: "0xFFEGKD")
+        let color7 = UIColor("0xFFEGKD")
 
+        let color8 = UIColor.color("0xFFEGKD")
+        
+        let color9 = UIColor.color("0xFFEGKD")
         
         let view1 = UIView(frame: CGRect(x: 10, y: 100, width: 80, height: 80))
         view1.backgroundColor = color1
