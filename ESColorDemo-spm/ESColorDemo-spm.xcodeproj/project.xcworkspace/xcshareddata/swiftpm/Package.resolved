@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "ESColor",
+        "repositoryURL": "https://github.com/KKLater/ESColor.git",
+        "state": {
+          "branch": "dev",
+          "revision": "4b8fc1df814aeeec0ae3e6258f9c198eb7eb452f",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

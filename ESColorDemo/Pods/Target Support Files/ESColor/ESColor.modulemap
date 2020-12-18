@@ -1,0 +1,6 @@
+framework module ESColor {
+  umbrella header "ESColor-umbrella.h"
+
+  export *
+  module * { export * }
+}
