@@ -17,6 +17,7 @@ final class ESColorTests: XCTestCase {
         print(a)
         let b = ESUIColor(0xFFEE11).brightness
         print(b)
+        let _ = ESUIColor(hexString: "0xFFEE11")
         if #available(iOS 13.0, *) {
             let c = ESUIColor(0xFF7745, 0x784334)
             print(c)

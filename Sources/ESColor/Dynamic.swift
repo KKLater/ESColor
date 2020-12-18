@@ -28,8 +28,6 @@ public struct Name {
         self.dynamicColor = dynamicColor
         self.darkColor = darkColor
     }
-    
-    
 }
 
 @available(iOS 13.0, *)

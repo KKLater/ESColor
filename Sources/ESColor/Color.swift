@@ -25,10 +25,7 @@ public extension ESUIColor {
             return
         }
         let hexStr = ESUIColor.hexString(for: value)
-        let alpha = ESUIColor.alpha(for: hexStr)
-        let formatHexString = ESUIColor.formatHexString(hexStr)
-        let components = ESUIColor.colorComponents(formatHexString)
-        self.init(red: components.red, green: components.green, blue: components.blue, alpha: alpha)
+        self.init(hexString: hexStr)
     }
     
     convenience init(_ value: Int, alpha: CGFloat) {
@@ -36,15 +33,28 @@ public extension ESUIColor {
             self.init(red: 0, green: 0, blue: 0, alpha: 0)
             return
         }
+        
         let hexStr = ESUIColor.hexString(for: value)
         let formatHexString = ESUIColor.formatHexString(hexStr)
         let components = ESUIColor.colorComponents(formatHexString)
         self.init(red: components.red, green: components.green, blue: components.blue, alpha: alpha)
     }
     
-    convenience init(_ components: ColorComponents) {
+    convenience init(components: ColorComponents) {
         self.init(red: components.red, green: components.green, blue: components.blue, alpha: components.alpha)
     }
+    
+    convenience init(hexString: String) {
+        let alpha = ESUIColor.alpha(for: hexString)
+        self.init(hexString: hexString, alpha: alpha)
+    }
+    
+    convenience init(hexString: String, alpha: CGFloat) {
+        let formatHexString = ESUIColor.formatHexString(hexString)
+        let components = ESUIColor.colorComponents(formatHexString)
+        self.init(red: components.red, green: components.green, blue: components.blue, alpha: alpha)
+    }
+    
 }
 
 private extension ESUIColor {
