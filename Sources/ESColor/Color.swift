@@ -45,12 +45,12 @@ public extension ESUIColor {
     }
     
     convenience init(hexString: String) {
-        let alpha = ESUIColor.alpha(for: hexString)
+        let alpha = ESUIColor.alpha(for: hexString.uppercased())
         self.init(hexString: hexString, alpha: alpha)
     }
     
     convenience init(hexString: String, alpha: CGFloat) {
-        let formatHexString = ESUIColor.formatHexString(hexString)
+        let formatHexString = ESUIColor.formatHexString(hexString.uppercased())
         let components = ESUIColor.colorComponents(formatHexString)
         self.init(red: components.red, green: components.green, blue: components.blue, alpha: alpha)
     }
@@ -183,8 +183,16 @@ private extension ESUIColor {
     }
     
     static func hex(_ str: String) -> Int {
-        let string = "0x" + str
+        let suffix = min(str.suffix(1), "F")
+        let prefix = min(str.prefix(1), "F")
+        
+        let string = "0x\(prefix)\(suffix)"
         let scanner = Scanner(string: string)
+        var intNum: Int = 0
+        scanner.scanInt(&intNum)
+        if intNum > 255 {
+            return 255
+        }
         var hexNum: UInt32 = 0
         scanner.scanHexInt32(&hexNum)
         return Int(hexNum)
@@ -221,7 +229,7 @@ private extension ESUIColor {
                 break;
             }
         }
-        return str
+        return str.uppercased()
     }
     
     static func alpha(for value: Int) -> CGFloat {

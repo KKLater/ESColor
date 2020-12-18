@@ -13,6 +13,9 @@ typealias ESUIColor = UIColor
 final class ESColorTests: XCTestCase {
     
     func testExample() {
+        let color1 = UIColor(hexString: "0xFFEGKD")
+        let color2 = UIColor(hexString: "0xffegkd")
+
         let a = ESUIColor(0xFFEE1122).red
         print(a)
         let b = ESUIColor(0xFFEE11).brightness

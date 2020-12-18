@@ -21,10 +21,14 @@ class ViewController: UIViewController {
         let color3 = UIColor(.normal)
         let color4 = UIColor(Name(0xFFFFFF))
         let color5 = UIColor(Name(dynamicColor: .red, darkColor: .green))
+        
         print(color1, color2, color3, color4)
 
         let color6 = UIColor.randomColor()
         print(color6)
+        
+        let color7 = UIColor(hexString: "0xFFEGKD")
+
         
         let view1 = UIView(frame: CGRect(x: 10, y: 100, width: 80, height: 80))
         view1.backgroundColor = color1
