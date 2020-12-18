@@ -5,13 +5,11 @@
 //  Created by 罗树新 on 2020/12/18.
 //
 
-#if os(macOS)
-import AppKit
-#else
+#if !os(macOS) && !os(watchOS)
 import Foundation
 import UIKit
 
-@available(iOS 13.0, *)
+@available(iOS 13.0, tvOS 13.0,*)
 public struct Name {
     fileprivate var dynamicColor: ESUIColor
     fileprivate var darkColor: ESUIColor
@@ -30,11 +28,9 @@ public struct Name {
     }
 }
 
-@available(iOS 13.0, *)
+@available(iOS 13.0, tvOS 13.0,*)
 public extension ESUIColor {
     
- 
-
     convenience init(_ dynamic: Int, _ dark: Int) {
         if dynamic == dark {
             self.init(dynamic)

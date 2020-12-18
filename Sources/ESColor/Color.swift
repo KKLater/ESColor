@@ -16,16 +16,14 @@ public typealias ESUIColor = UIColor
 
 
 public extension ESUIColor {
-    
-    typealias ColorComponents = (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
-    
+        
     convenience init(_ value: Int) {
         guard value != 0 else {
             self.init(red: 0, green: 0, blue: 0, alpha: 1)
             return
         }
         let hexStr = ESUIColor.hexString(for: value)
-        self.init(hexString: hexStr)
+        self.init(hexStr)
     }
     
     convenience init(_ value: Int, alpha: CGFloat) {
@@ -35,29 +33,23 @@ public extension ESUIColor {
         }
         
         let hexStr = ESUIColor.hexString(for: value)
-        let formatHexString = ESUIColor.formatHexString(hexStr)
-        let components = ESUIColor.colorComponents(formatHexString)
-        self.init(red: components.red, green: components.green, blue: components.blue, alpha: alpha)
+        self.init(hexStr, alpha: alpha)
+    }
+            
+    convenience init(_ hexString: String) {
+        let formatHexString = ESUIColor.formatHexString(hexString)
+        let alpha = ESUIColor.alpha(for: formatHexString.uppercased())
+        self.init(hexString, alpha: alpha)
     }
     
-    convenience init(components: ColorComponents) {
-        self.init(red: components.red, green: components.green, blue: components.blue, alpha: components.alpha)
-    }
-    
-    convenience init(hexString: String) {
-        let alpha = ESUIColor.alpha(for: hexString.uppercased())
-        self.init(hexString: hexString, alpha: alpha)
-    }
-    
-    convenience init(hexString: String, alpha: CGFloat) {
+    convenience init(_ hexString: String, alpha: CGFloat) {
         let formatHexString = ESUIColor.formatHexString(hexString.uppercased())
         let components = ESUIColor.colorComponents(formatHexString)
         self.init(red: components.red, green: components.green, blue: components.blue, alpha: alpha)
     }
-    
 }
 
-private extension ESUIColor {
+extension ESUIColor {
     
     static func colorComponents(_ string: String) -> ColorComponents {
         let alpha = ESUIColor.alpha(for: string)
@@ -122,8 +114,8 @@ private extension ESUIColor {
     }
     
     static func alpha(for hexStr: String) -> CGFloat {
-        var alphaHexStr: String = ""
-        
+        var alphaHexStr: String?
+ 
         if hexStr.count == 4 {
             /// FFFF
             alphaHexStr = String(hexStr[hexStr.startIndex])
@@ -131,18 +123,26 @@ private extension ESUIColor {
             /// FFFFFFFF
             alphaHexStr = String(hexStr[hexStr.index(hexStr.startIndex, offsetBy: String.IndexDistance.init(2))])
         }
-        
-        if alphaHexStr.count == 1 {
-            alphaHexStr += alphaHexStr
+
+        guard let tAlphaHexStr = alphaHexStr else {
+            return 1
         }
         
-        let alphaInt = hex(alphaHexStr)
+        
+        let alphaInt = hex(tAlphaHexStr)
         let alpha = CGFloat(alphaInt) / 255.0
-        return alpha != 0 ? alpha :  1
+        return alpha
     }
     
     static func formatHexString(_ hexString: String) -> String {
-        var formatHexString = hexString
+        if hexString.hasPrefix("0x") {
+            
+        }
+        var formatHexString = hexString.uppercased()
+        if formatHexString.hasPrefix("0X") {
+            formatHexString = formatHexString.replacingOccurrences(of: "0X", with: "")
+        }
+        
         if hexString.count == 4 || hexString.count == 8 {
             /// FFFFFFFF
             let count = hexString.count == 8 ? 6 : 3
@@ -171,7 +171,7 @@ private extension ESUIColor {
             formatHexString = tFormatHexString
         }
         
-        return formatHexString
+        return formatHexString.uppercased()
     }
     
     static func getColorComponents(_ value: Int) -> (red: CGFloat, green: CGFloat, blue: CGFloat) {
@@ -186,16 +186,23 @@ private extension ESUIColor {
         let suffix = min(str.suffix(1), "F")
         let prefix = min(str.prefix(1), "F")
         
-        let string = "0x\(prefix)\(suffix)"
-        let scanner = Scanner(string: string)
+        let string = "0X\(prefix)\(suffix)"
+        let intScanner = Scanner(string: string)
         var intNum: Int = 0
-        scanner.scanInt(&intNum)
-        if intNum > 255 {
+        intScanner.scanInt(&intNum)
+        if intNum >= 255 {
             return 255
         }
-        var hexNum: UInt32 = 0
-        scanner.scanHexInt32(&hexNum)
-        return Int(hexNum)
+        let scanner = Scanner(string: string)
+        if #available(iOS 13.0, macCatalyst 13.0, *) {
+            var hexNum: UInt64 = 0
+            scanner.scanHexInt64(&hexNum)
+            return Int(hexNum)
+        } else {
+            var hexNum: UInt32 = 0
+            scanner.scanHexInt32(&hexNum)
+            return Int(hexNum)
+        }
     }
     
     static func hexString(for value: Int) -> String {

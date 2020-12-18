@@ -21,6 +21,8 @@ public extension ESUIColor {
     
     typealias WAComponents = (white: CGFloat, alpha: CGFloat)
     
+    typealias ColorComponents = RGBAComponents
+
     var RGBA: RGBAComponents {
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0
@@ -57,15 +59,15 @@ public extension ESUIColor {
     
     var alpha: CGFloat { RGBA.alpha }
 
-    convenience init(RGBA: RGBAComponents) {
+    convenience init(_ RGBA: RGBAComponents) {
         self.init(red: RGBA.red, green: RGBA.green, blue: RGBA.blue, alpha: RGBA.alpha)
     }
     
-    convenience init(HSBA: HSBAComponents) {
+    convenience init(_ HSBA: HSBAComponents) {
         self.init(hue: HSBA.hue, saturation: HSBA.saturation, brightness: HSBA.saturation, alpha: HSBA.alpha)
     }
     
-    convenience init(WA: WAComponents) {
+    convenience init(_ WA: WAComponents) {
         self.init(white: WA.white, alpha: WA.alpha)
     }
     

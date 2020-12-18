@@ -13,15 +13,16 @@ typealias ESUIColor = UIColor
 final class ESColorTests: XCTestCase {
     
     func testExample() {
-        let color1 = UIColor(hexString: "0xFFEGKD")
-        let color2 = UIColor(hexString: "0xffegkd")
+        let color1 = UIColor("0xFFEGKD")
+        let color2 = UIColor("0xffegkd")
 
+        let color3: UIColor = .color(0xFFEE1122)
         let a = ESUIColor(0xFFEE1122).red
         print(a)
         let b = ESUIColor(0xFFEE11).brightness
         print(b)
-        let _ = ESUIColor(hexString: "0xFFEE11")
-        if #available(iOS 13.0, *) {
+        let _ = ESUIColor("0xFFEE11")
+        if #available(iOS 13.0, tvOS 13.0, *) {
             let c = ESUIColor(0xFF7745, 0x784334)
             print(c)
         } else {
