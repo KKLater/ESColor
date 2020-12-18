@@ -13,6 +13,12 @@ import UIKit
 #endif
 
 public extension ESUIColor {
+    
+    /// 混合颜色
+    /// - Parameters:
+    ///   - color: 目标颜色
+    ///   - amount: 混合进度比 0 ~ 1
+    /// - Returns: 混合后颜色
     func mix(with color: ESUIColor, amount: Float) -> ESUIColor {
         let c1 = self.RGBA
         let c2 = color.RGBA

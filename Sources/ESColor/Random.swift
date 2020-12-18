@@ -14,7 +14,8 @@ import UIKit
 
 public extension ESUIColor {
     
-    static func randomColor() -> ESUIColor {
+    /// 随机颜色
+    static func random() -> ESUIColor {
         let color: ESUIColor = ESUIColor.init(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 1.0);
         return color
     }

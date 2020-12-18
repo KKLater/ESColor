@@ -16,7 +16,10 @@ public typealias ESUIColor = UIColor
 
 
 public extension ESUIColor {
-        
+    
+    /// 根据 16 进制色值生成颜色
+    /// - Parameter value: 16 进制色值
+    /// 默认 alpha 为 1
     convenience init(_ value: Int) {
         guard value != 0 else {
             self.init(red: 0, green: 0, blue: 0, alpha: 1)
@@ -26,6 +29,10 @@ public extension ESUIColor {
         self.init(hexStr)
     }
     
+    /// 根据 16 进制色值 和 透明度 生成颜色
+    /// - Parameters:
+    ///   - value: 16进制色值，0xFFFFFF，0xFFF
+    ///   - alpha: 透明度 0 ~ 1
     convenience init(_ value: Int, alpha: CGFloat) {
         guard value != 0 else {
             self.init(red: 0, green: 0, blue: 0, alpha: 1)
@@ -35,13 +42,19 @@ public extension ESUIColor {
         let hexStr = ESUIColor.hexString(for: value)
         self.init(hexStr, alpha: alpha)
     }
-            
+    
+    /// 根据 16 进制字符串生成颜色
+    /// - Parameter hexString: 16 进制字符串 "0xFFFFFF"、"0xFFF"
     convenience init(_ hexString: String) {
         let formatHexString = ESUIColor.formatHexString(hexString)
         let alpha = ESUIColor.alpha(for: formatHexString.uppercased())
         self.init(hexString, alpha: alpha)
     }
     
+    /// 根据 16 进制字符串 和 透明度 生成颜色
+    /// - Parameters:
+    ///   - hexString: 16进制字符串
+    ///   - alpha: 透明度 0 ~ 1
     convenience init(_ hexString: String, alpha: CGFloat) {
         let formatHexString = ESUIColor.formatHexString(hexString.uppercased())
         let components = ESUIColor.colorComponents(formatHexString)

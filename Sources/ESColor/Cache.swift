@@ -8,6 +8,7 @@
 #if !os(macOS)
 import Foundation
 import UIKit
+
 /// 自动清理缓存
 ///
 /// 在收到系统内容警告时，会自动清理掉内存缓存
