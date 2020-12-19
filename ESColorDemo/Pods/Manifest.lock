@@ -2,21 +2,15 @@ PODS:
   - ESColor (0.0.1)
 
 DEPENDENCIES:
-  - ESColor (from `https://github.com/KKLater/ESColor.git`, branch `dev`)
+  - ESColor
 
-EXTERNAL SOURCES:
-  ESColor:
-    :branch: dev
-    :git: https://github.com/KKLater/ESColor.git
-
-CHECKOUT OPTIONS:
-  ESColor:
-    :commit: 4b8fc1df814aeeec0ae3e6258f9c198eb7eb452f
-    :git: https://github.com/KKLater/ESColor.git
+SPEC REPOS:
+  trunk:
+    - ESColor
 
 SPEC CHECKSUMS:
   ESColor: c1d541940e3c9d3ff4275ca7120f138db225ac04
 
-PODFILE CHECKSUM: 649e5359cafb38fe566278d250010d13c747778b
+PODFILE CHECKSUM: ca7e45db287b78ec85c0c7fda9843de87f9ec949
 
 COCOAPODS: 1.10.0
